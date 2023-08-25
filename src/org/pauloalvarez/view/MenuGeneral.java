@@ -8,13 +8,22 @@ import java.util.Scanner;
 import org.pauloalvarez.model.Menus;
 import org.pauloalvarez.util.ScannerSingleton;
 
-public class MenuGeneral {
 
-    TamagotchiView tamagotchiV = new TamagotchiView();
+public class MenuGeneral {
+    private static MenuGeneral instancia;
+
+    TamagotchiView tamagotchiV = TamagotchiView.getInstancia();
     Scanner input = ScannerSingleton.getInstancia();
-    Menus menu = new Menus();
+    Menus menu = Menus.getInstancia();
     int op;
     boolean flag = true;
+
+    public static synchronized MenuGeneral getInstancia() {
+        if (instancia == null) {
+            instancia = new MenuGeneral();
+        }
+        return instancia;
+    }
 
     public void iniciar() {
         /**

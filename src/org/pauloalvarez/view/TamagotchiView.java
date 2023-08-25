@@ -17,7 +17,8 @@ import org.pauloalvarez.model.PersonajeMasculino;
 import org.pauloalvarez.util.ScannerSingleton;
 
 public class TamagotchiView {
-    
+    private static TamagotchiView instancia;
+
     public String personaje = "";
     public PersonajeMasculino pMasculino = new PersonajeMasculino();
     public PersonajeFemenino pFemenino = new PersonajeFemenino();
@@ -25,12 +26,19 @@ public class TamagotchiView {
     TamagotchiController tamagotchiControl = TamagotchiController.getInstancia();
     EstudioController estudiar = EstudioController.getInstancia();
     Comida alimentos = new Comida();
-    Menus menu = new Menus();
+    Menus menu = Menus.getInstancia();
     
     private String nickname;
     private boolean genero = true;
     public int op;
     public boolean flag = true;
+
+    public static synchronized TamagotchiView getInstancia() {
+        if (instancia == null) {
+            instancia = new TamagotchiView();
+        }
+        return instancia;
+    }
     
     public void inicioTamagotchi() {
         tamagotchiControl.cargarTamagotchi();

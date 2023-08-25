@@ -17,7 +17,7 @@ public class Main {
          * 
          * Debido a limitaciones de tiempo, no pude documentar todo el programa.
          */
-        MenuGeneral iniciarMenu = new MenuGeneral();
+        MenuGeneral iniciarMenu = MenuGeneral.getInstancia();
         
         iniciarMenu.iniciar();
     }

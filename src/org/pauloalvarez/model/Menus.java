@@ -6,9 +6,17 @@ package org.pauloalvarez.model;
  */
 
 public class Menus {
+    private static Menus instancia;
 
     private String menuActual;
     private String icono;
+
+    public static synchronized Menus getInstancia() {
+        if (instancia == null) {
+            instancia = new Menus();
+        }
+        return instancia;
+    }
 
     public String cabezera() {
         menuActual = "--------------------------------------------------------------------------------\n"
